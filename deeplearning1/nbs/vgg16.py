@@ -13,7 +13,7 @@ from keras.models import Sequential
 from keras.layers.core import Flatten, Dense, Dropout, Lambda
 from keras.layers.convolutional import Convolution2D, MaxPooling2D, ZeroPadding2D
 from keras.layers.pooling import GlobalAveragePooling2D
-from keras.optimizers import SGD, RMSprop, Adam
+from keras.optimizers import SGD, RMSprop, Adam, Nadam
 from keras.preprocessing import image
 
 # In case we are going to use the TensorFlow backend we need to explicitly set the Theano image ordering
@@ -191,7 +191,7 @@ class Vgg16():
             Configures the model for training.
             See Keras documentation: https://keras.io/models/model/
         """
-        self.model.compile(optimizer=Adam(lr=lr),
+        self.model.compile(optimizer=Nadam(lr=lr),
                 loss='categorical_crossentropy', metrics=['accuracy'])
 
 
